@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* 全站字体：思源黑体 / Inter，缺失时回退到系统中文黑体 */
+  --font-sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  /* 锚点目录平滑滚动 */
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
