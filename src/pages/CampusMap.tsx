@@ -1,9 +1,10 @@
 import { ExternalLink } from 'lucide-react'
 
 /**
- * 主校区两个 360° 全景视角：
- * - 空中视角：720yun 提供的校园空中全景
- * - 地面视角：Marzipano 制作的地面全景漫游（可切换多处场景）
+ * 校园 360° 全景视角：
+ * - 主校区空中视角：720yun 提供的校园空中全景
+ * - 主校区地面视角：Marzipano 制作的地面全景漫游（可切换多处场景）
+ * - 雷锋校区视角：720yun 提供的雷锋校区全景街景
  * 点击卡片在新标签页打开完整街景。
  */
 const panoramas = [
@@ -21,6 +22,13 @@ const panoramas = [
     footLabel: '本校学生制作',
     href: '3602/index.html',
   },
+  {
+    title: '雷锋校区 · 街景',
+    desc: '720yun 提供的雷锋校区全景街景，可在线浏览雷锋校区的整体环境与风貌。',
+    badge: '720yun 全景',
+    footLabel: '360° 全景街景',
+    href: 'https://www.720yun.com/vr/8fdjerknsw5',
+  },
 ]
 
 export default function CampusMap() {
@@ -28,10 +36,10 @@ export default function CampusMap() {
     <div className="max-w-5xl">
       <h2 className="text-lg font-semibold text-slate-800">校园全景</h2>
       <p className="mt-2 text-sm leading-relaxed text-slate-500">
-        主校区提供空中与地面两个 360° 全景视角，点击卡片即可进入街景。
+        主校区与雷锋校区共提供多个 360° 全景视角，点击卡片即可进入街景。
       </p>
 
-      <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
         {panoramas.map((item) => (
           <a
             key={item.title}
