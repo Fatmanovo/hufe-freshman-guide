@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>正在跳转…</title>
   <script>
-    // GitHub Pages 单页应用 404 处理：
-    // 用户直接访问深层路径（如 /<仓库名>/map/overview）时由 GH Pages 返回本页，
-    // 将其转为 hash 路由（#/map/overview）后跳回首页，由应用自行定位页面。
+    // 单页应用 404 处理：
+    // 用户直接访问深层路径（无 hash）时由 GH Pages 返回本页，
+    // 将其转为 hash 路由（#/xxx）后跳回，由应用自行定位页面。
+    // - 自定义域名（guide.hufe.tech，根路径）：/xxx -> /#/xxx
+    // - GitHub Pages 项目站（/仓库名/）：/仓库名/xxx -> /仓库名/#/xxx
     (function () {
       var seg = location.pathname.replace(/^\/+|\/+$/g, '').split('/')
-      var repo = seg[0] || ''               // GitHub Pages 项目站路径第一段为仓库名
-      var appPath = seg.slice(1).join('/')  // 应用内路径
+      var prefix = ''
+      var appPath = seg.join('/')
+      if (location.hostname.indexOf('github.io') > -1 && seg.length > 1) {
+        prefix = '/' + seg[0]          // GitHub Pages 项目站路径第一段为仓库名
+        appPath = seg.slice(1).join('/')
+      }
       var hash = appPath ? '#/' + appPath : '#/'
-      location.replace('/' + repo + '/' + hash)
+      location.replace(prefix + '/' + hash)
     })()
   </script>
 </head>

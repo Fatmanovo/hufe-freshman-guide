@@ -31,10 +31,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          # 注入 GitHub Pages 部署路径，vite 据此设置 base = /<仓库名>/，
-          # 保证 JS / CSS / 图片 / 360 全景资源路径正确
-          BASE_PATH: /${{ github.event.repository.name }}/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
